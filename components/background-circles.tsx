@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import clsx from "clsx";
 import { useState, ReactNode } from "react";
-
+import { CTAButton } from "./cta-button";
 interface BackgroundCirclesProps {
   title?: ReactNode;
   description?: string;
@@ -62,21 +62,21 @@ const COLOR_VARIANTS = {
   },
 } as const;
 
-const AnimatedGrid = () => (
-  <motion.div
-    className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black)]"
-    animate={{
-      backgroundPosition: ["0% 0%", "100% 100%"],
-    }}
-    transition={{
-      duration: 40,
-      repeat: Number.POSITIVE_INFINITY,
-      ease: "linear",
-    }}
-  >
-    <div className="h-full w-full [background-image:repeating-linear-gradient(100deg,#64748B_0%,#64748B_1px,transparent_1px,transparent_4%)] opacity-20" />
-  </motion.div>
-);
+// const AnimatedGrid = () => (
+//   <motion.div
+//     className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black)]"
+//     animate={{
+//       backgroundPosition: ["0% 0%", "100% 100%"],
+//     }}
+//     transition={{
+//       duration: 40,
+//       repeat: Number.POSITIVE_INFINITY,
+//       ease: "linear",
+//     }}
+//   >
+//     <div className="h-full w-full [background-image:repeating-linear-gradient(100deg,#64748B_0%,#64748B_1px,transparent_1px,transparent_4%)] opacity-20" />
+//   </motion.div>
+// );
 
 export function BackgroundCircles({
   title = (
@@ -86,21 +86,21 @@ export function BackgroundCircles({
       to launch MVP in 2-weeks
     </>
   ),
-  description = "",
+  // description = "",
   className,
   variant = "septenary",
 }: BackgroundCirclesProps) {
   const variantStyles = COLOR_VARIANTS[variant];
 
-  const variants = Object.keys(
-    COLOR_VARIANTS
-  ) as (keyof typeof COLOR_VARIANTS)[];
+  // const variants = Object.keys(
+  //   COLOR_VARIANTS
+  // ) as (keyof typeof COLOR_VARIANTS)[];
 
   return (
     <div
       className={clsx(
         "relative flex h-screen w-full items-center justify-center overflow-hidden",
-        "bg-black dark:bg-black/5",
+        "bg-[#0a0e1a] dark:bg-black/5",
         className
       )}
     >
@@ -147,7 +147,7 @@ export function BackgroundCircles({
       >
         <h1
           className={clsx(
-            "text-3xl font-bold tracking-tight md:text-5xl",
+            "text-3xl font-bold tracking-tight md:text-6xl",
             "bg-gradient-to-b from-cyan-200 to-white dark:from-white-100 dark:to-slate-300 bg-clip-text text-transparent",
             "drop-shadow-[0_0_32px_rgba(41,134,204,0.7)]"
           )}
@@ -161,7 +161,7 @@ export function BackgroundCircles({
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          {description}
+          <CTAButton text="Schedule A Call" />
         </motion.p>
       </motion.div>
 
